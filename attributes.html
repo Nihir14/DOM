@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="">i am breaked</a>
+
+    <script>
+        let attr = document.querySelector("a");
+        attr.setAttribute("href", "https://www.google.com");
+        attr.textContent = "Go to Google";
+        console.log(attr.getAttribute("href"));
+        attr.removeAttribute("href");
+    </script>
+</body>
+</html>

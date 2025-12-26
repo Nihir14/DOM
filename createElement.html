@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let element = document.createElement("h1");
+        element.textContent = "This is a created element";
+        document.body.prepend(element);
+        document.body.appendChild(element);
+        let anotherElement = document.createElement("h2");
+        anotherElement.textContent = "This is another created element";
+        document.body.append(anotherElement)
+    </script>
+</body>
+</html>
