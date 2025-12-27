@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Event Listener Example</h1>
+
+    <script>
+
+        // Adding an event listener to the h1 element
+
+        let event = document.querySelector("h1");
+        event.addEventListener("click", function() {
+            event.style.color = "red";
+        })
+
+        // To remove the event listener, you need to define the function separately
+
+        event.remEventListener("click", function() {
+            event.style.color = "red";
+        })
+    </script>
+</body>
+</html>
