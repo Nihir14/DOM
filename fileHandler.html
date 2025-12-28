@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        .main {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000000;
+        }
+
+        input {
+            display: none;
+        }
+
+        .inp {
+            width: 200px;
+            height: 50px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main">
+        <input class="fileInp" type="file" name="" id="">
+        <div class="inp">
+            Click to upload file
+        </div>
+    </div>
+
+
+
+    <script>
+        let inp = document.querySelector(".inp");
+        let filInp = document.querySelector(".fileInp");
+
+        inp.addEventListener("click", () => {
+            filInp.click();
+        });
+
+        filInp.addEventListener("change", (e) => {
+            if (e.target.files[0]) {
+                inp.textContent = e.target.files[0].name;
+            }
+        });
+    </script>
+</body>
+
+</html>

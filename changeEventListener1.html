@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'gilrye', sans-serif;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        #main {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #2d2222;
+            color: #807777;
+            font-size: 15rem;
+        }
+
+        h1 {
+            user-select: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <h1>a</h1>
+
+    </div>
+
+    <script>
+        let h1 = document.querySelector('h1');
+        window.addEventListener('keydown', (e) => {
+            if (e.key === " ") {
+                h1.textContent = "Space";
+            } else {
+                h1.textContent = e.key;
+            }
+        });
+    </script>
+</body>
+
+</html>
