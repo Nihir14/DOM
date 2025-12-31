@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event Capturing Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .grandparent {
+            padding: 40px;
+            background-color: lightcoral;
+        }
+
+        .parent {
+            padding: 30px;
+            background-color: lightblue;
+        }
+
+        .child {
+            padding: 20px;
+            background-color: lightgreen;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Event Capturing Example</h2>
+<p>Click on the <b>Child</b> div and watch the alert order.</p>
+
+<div class="grandparent" id="grandparent">
+    Grandparent
+    <div class="parent" id="parent">
+        Parent
+        <div class="child" id="child">
+            Child (Click Me)
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById("grandparent").addEventListener(
+        "click",
+        function () {
+            alert("Grandparent (Capturing)");
+        },
+        true
+    );
+
+    document.getElementById("parent").addEventListener(
+        "click",
+        function () {
+            alert("Parent (Capturing)");
+        },
+        true
+    );
+
+    document.getElementById("child").addEventListener(
+        "click",
+        function () {
+            alert("Child (Capturing)");
+        },
+        true
+    );
+</script>
+
+</body>
+</html>

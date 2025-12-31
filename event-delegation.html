@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event Delegation Example</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+        }
+
+        ul {
+            width: 200px;
+            cursor: pointer;
+        }
+
+        li {
+            padding: 8px;
+            font-size: 18px;
+        }
+
+        .active {
+            background-color: lightgreen;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Event Delegation Example</h2>
+<p>Click any list item.</p>
+
+<ul id="menu">
+    <li>Home</li>
+    <li>About</li>
+    <li>Services</li>
+    <li>Contact</li>
+    <li>Help</li>
+</ul>
+
+<script>
+    // Event delegation: single listener on parent (UL)
+    document.getElementById("menu").addEventListener("click", function (event) {
+        if (event.target.tagName === "LI") {
+            event.target.classList.toggle("active");
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event Bubbling - Fruit List</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+        }
+
+        ul {
+            width: 200px;
+            cursor: pointer;
+        }
+
+        li {
+            padding: 8px;
+            font-size: 18px;
+        }
+
+        .done {
+            text-decoration: line-through;
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Fruit List (Event Bubbling Example)</h2>
+
+<ul id="fruitList">
+    <li>Apple</li>
+    <li>Banana</li>
+    <li>Mango</li>
+    <li>Orange</li>
+    <li>Grapes</li>
+</ul>
+
+<script>
+    // Event bubbling: click handled by UL, not individual LI
+    document.getElementById("fruitList").addEventListener("click", function (event) {
+        if (event.target.tagName === "LI") {
+            event.target.classList.toggle("done");
+        }
+    });
+</script>
+
+</body>
+</html>
