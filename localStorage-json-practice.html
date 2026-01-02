@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LocalStorage Dynamic JSON Practice</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background: #f4f6f8;
+    }
+
+    .box {
+      max-width: 500px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    input, button {
+      width: 100%;
+      padding: 8px;
+      margin: 8px 0;
+    }
+
+    button {
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    pre {
+      background: #eee;
+      padding: 10px;
+      border-radius: 5px;
+      margin-top: 15px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h2>LocalStorage JSON Practice</h2>
+
+    <input type="text" id="name" placeholder="Enter Name">
+    <input type="text" id="role" placeholder="Enter Role">
+
+    <button onclick="addData()">ADD / STORE Data</button>
+    <button onclick="getData()">GET Data</button>
+    <button onclick="clearData()">CLEAR Storage</button>
+
+    <pre id="output">Stored data will appear here...</pre>
+  </div>
+
+  <!-- JavaScript at end of body -->
+  <script>
+    const nameInput = document.getElementById("name");
+    const roleInput = document.getElementById("role");
+    const output = document.getElementById("output");
+
+    const STORAGE_KEY = "usersData";
+
+    // ADD / STORE data
+    function addData() {
+      const name = nameInput.value;
+      const role = roleInput.value;
+
+      if (!name || !role) {
+        output.textContent = "Please enter both name and role";
+        return;
+      }
+
+      // Get existing data or empty array
+      const existingData =
+        JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+
+      // Create new object
+      const newUser = {
+        name: name,
+        role: role
+      };
+
+      // Push new object
+      existingData.push(newUser);
+
+      // Store back using JSON.stringify
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(existingData));
+
+      output.textContent = "Data stored successfully";
+
+      // Clear inputs
+      nameInput.value = "";
+      roleInput.value = "";
+    }
+
+    // GET data
+    function getData() {
+      const data = localStorage.getItem(STORAGE_KEY);
+
+      if (data) {
+        const parsedData = JSON.parse(data);
+        output.textContent = JSON.stringify(parsedData, null, 2);
+      } else {
+        output.textContent = "No data found in localStorage";
+      }
+    }
+
+    // CLEAR storage
+    function clearData() {
+      localStorage.removeItem(STORAGE_KEY);
+      output.textContent = "LocalStorage data cleared";
+    }
+  </script>
+
+</body>
+</html>

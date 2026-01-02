@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Local Storage Practice</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background: #f4f6f8;
+    }
+
+    .box {
+      max-width: 400px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    input, button {
+      width: 100%;
+      padding: 8px;
+      margin: 8px 0;
+    }
+
+    button {
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .output {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h2>Local Storage Practice</h2>
+
+    <input type="text" id="key" placeholder="Enter Key">
+    <input type="text" id="value" placeholder="Enter Value">
+
+    <button onclick="setItem()">SET Item</button>
+    <button onclick="getItem()">GET Item</button>
+    <button onclick="updateItem()">UPDATE Item</button>
+    <button onclick="removeItem()">REMOVE Item</button>
+
+    <div class="output" id="output"></div>
+  </div>
+
+  <!-- JavaScript at the end of body -->
+  <script>
+    const keyInput = document.getElementById("key");
+    const valueInput = document.getElementById("value");
+    const output = document.getElementById("output");
+
+    // SET item
+    function setItem() {
+      localStorage.setItem(keyInput.value, valueInput.value);
+      output.innerText = "Item SET successfully";
+    }
+
+    // GET item
+    function getItem() {
+      const value = localStorage.getItem(keyInput.value);
+      output.innerText = value !== null
+        ? `Value: ${value}`
+        : "Item not found";
+    }
+
+    // UPDATE item (same as SET with same key)
+    function updateItem() {
+      localStorage.setItem(keyInput.value, valueInput.value);
+      output.innerText = "Item UPDATED successfully";
+    }
+
+    // REMOVE item
+    function removeItem() {
+      localStorage.removeItem(keyInput.value);
+      output.innerText = "Item REMOVED successfully";
+    }
+  </script>
+
+</body>
+</html>

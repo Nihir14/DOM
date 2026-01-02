@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Session & Storage Practice</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background: #f4f6f8;
+    }
+
+    .container {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .box {
+      width: 350px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    input, button {
+      width: 100%;
+      padding: 8px;
+      margin: 8px 0;
+    }
+
+    button {
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .output {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Session Storage & Storage Practice</h2>
+
+  <div class="container">
+
+    <!-- SESSION STORAGE -->
+    <div class="box">
+      <h3>Session Storage (SAS)</h3>
+
+      <input type="text" id="sKey" placeholder="Enter Key">
+      <input type="text" id="sValue" placeholder="Enter Value">
+
+      <button onclick="setSession()">SET Item</button>
+      <button onclick="getSession()">GET Item</button>
+      <button onclick="updateSession()">UPDATE Item</button>
+      <button onclick="removeSession()">REMOVE Item</button>
+
+      <div class="output" id="sessionOutput"></div>
+    </div>
+
+    <!-- STORAGE (CLEAR) -->
+    <div class="box">
+      <h3>Storage (Clear)</h3>
+
+      <p>This will clear all stored data</p>
+
+      <button onclick="clearLocal()">Clear Local Storage</button>
+      <button onclick="clearSession()">Clear Session Storage</button>
+
+      <div class="output" id="storageOutput"></div>
+    </div>
+
+  </div>
+
+  <!-- JavaScript at end -->
+  <script>
+    const sKey = document.getElementById("sKey");
+    const sValue = document.getElementById("sValue");
+    const sessionOutput = document.getElementById("sessionOutput");
+    const storageOutput = document.getElementById("storageOutput");
+
+    /* SESSION STORAGE */
+
+    function setSession() {
+      sessionStorage.setItem(sKey.value, sValue.value);
+      sessionOutput.innerText = "Session item SET successfully";
+    }
+
+    function getSession() {
+      const value = sessionStorage.getItem(sKey.value);
+      sessionOutput.innerText = value !== null
+        ? `Value: ${value}`
+        : "Item not found";
+    }
+
+    function updateSession() {
+      sessionStorage.setItem(sKey.value, sValue.value);
+      sessionOutput.innerText = "Session item UPDATED successfully";
+    }
+
+    function removeSession() {
+      sessionStorage.removeItem(sKey.value);
+      sessionOutput.innerText = "Session item REMOVED successfully";
+    }
+
+    /* STORAGE CLEAR */
+
+    function clearLocal() {
+      localStorage.clear();
+      storageOutput.innerText = "Local Storage CLEARED";
+    }
+
+    function clearSession() {
+      sessionStorage.clear();
+      storageOutput.innerText = "Session Storage CLEARED";
+    }
+  </script>
+
+</body>
+</html>
