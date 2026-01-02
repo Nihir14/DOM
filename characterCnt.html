@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="" id="">
+    <h5>Characters Left : <span id="charCount">20</span></h5>
+
+    <script>
+        let inp = document.querySelector("input");
+        let charCount = document.querySelector("#charCount");
+
+        inp.addEventListener("input", function() {
+            let count = 20 - inp.value.length;
+            charCount.innerText = count;
+
+            if (count < 0) {
+                charCount.style.color = "red";
+            } else {
+                charCount.style.color = "black";
+            }
+        });
+    </script>
+</body>
+</html>

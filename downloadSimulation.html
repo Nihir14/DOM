@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Download Simulation Practice</title>
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  height: 100vh;
+  background: #f4f6f8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.download-container {
+  width: 350px;
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.progress-wrapper {
+  width: 100%;
+  height: 20px;
+  background: #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 15px 0;
+}
+
+.progress-bar {
+  width: 0%;
+  height: 100%;
+  background: #4caf50;
+}
+
+.percentage {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.status {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  flex: 1;
+  margin: 0 5px;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#start {
+  background: #4caf50;
+  color: white;
+}
+
+#pause {
+  background: #ff9800;
+  color: white;
+}
+
+#reset {
+  background: #f44336;
+  color: white;
+}
+
+  </style>
+</head>
+<body>
+
+  <div class="download-container">
+    <h2>Download File</h2>
+
+    <!-- Progress Bar -->
+    <div class="progress-wrapper">
+      <div class="progress-bar"></div>
+    </div>
+
+    <!-- Percentage -->
+    <p class="percentage">0%</p>
+
+    <!-- Status Text -->
+    <p class="status">Waiting to start...</p>
+
+    <!-- Buttons -->
+    <div class="buttons">
+      <button id="start">Start</button>
+      <button id="pause">Pause</button>
+      <button id="reset">Reset</button>
+    </div>
+  </div>
+
+  <script>
+    const progressBar = document.querySelector('.progress-bar');
+    const percentageText = document.querySelector('.percentage');
+    const statusText = document.querySelector('.status');
+    const startBtn = document.getElementById('start');
+    const pauseBtn = document.getElementById('pause');
+    const resetBtn = document.getElementById('reset');
+
+    let progress = 0;
+    let interval = null;
+
+    function updateProgress() {
+      if (progress < 100) {
+        progress++;
+        progressBar.style.width = progress + '%';
+        percentageText.textContent = progress + '%';
+        statusText.textContent = 'Downloading...';
+
+        if (progress === 100) {
+          statusText.textContent = 'Download Complete!';
+          clearInterval(interval);
+        }
+      }
+    }
+
+    startBtn.addEventListener('click', () => {
+      if (!interval) {
+        interval = setInterval(updateProgress, 100);
+        statusText.textContent = 'Downloading...';
+      }
+    });
+
+    pauseBtn.addEventListener('click', () => {
+      clearInterval(interval);
+      interval = null;
+      statusText.textContent = 'Paused';
+    });
+
+    resetBtn.addEventListener('click', () => {
+      clearInterval(interval);
+      interval = null;
+      progress = 0;
+      progressBar.style.width = '0%';
+      percentageText.textContent = '0%';
+      statusText.textContent = 'Waiting to start...';
+    });
+  </script>
+</body>
+</html>
